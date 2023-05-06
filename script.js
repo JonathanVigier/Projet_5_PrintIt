@@ -22,9 +22,19 @@ const leftArrow = document.querySelector(".arrow_left");
 const rightArrow = document.querySelector(".arrow_right");
 const imageBanner = document.getElementById("banner-img");
 const tagLineBanner = document.getElementById("tagline");
+const dotsContainer = document.querySelector(".dots");
 
 let n = 0;
 let i = 0;
+
+function generateDots() {
+  for (let i = 0; i < slides.length; i++) {
+    const dot = document.createElement("div");
+    dot.classList.add("dot");
+    dotsContainer.appendChild(dot);
+  }
+  dotsContainer.children[0].classList.add("dot_selected");
+}
 
 function switchToLeft() {
   if (n === 0) {
