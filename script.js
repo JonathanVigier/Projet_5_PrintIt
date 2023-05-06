@@ -20,44 +20,36 @@ const slides = [
 
 const leftArrow = document.querySelector(".arrow_left");
 const rightArrow = document.querySelector(".arrow_right");
-const imageBanner = document.querySelector(".banner-img");
-const tagLineBanner = document.getElementById("banner").children[3];
-const dots = document.querySelectorAll(".dot");
+const imageBanner = document.getElementById("banner-img");
+const tagLineBanner = document.getElementById("tagline");
+
 let n = 0;
 let i = 0;
 
-leftArrow.addEventListener("click", () => {
+function switchToLeft() {
   if (n === 0) {
     n = 4;
     i = 4;
-    dots[0].classList.remove("dot_selected");
   }
+
   n -= 1;
   i -= 1;
   imageBanner.src = `./assets/images/slideshow/${slides[n].image}`;
   tagLineBanner.innerHTML = slides[n].tagLine;
-  if (0 < i < 4) {
-    dots[i].classList.add("dot_selected");
-    dots[i + 1].classList.remove("dot_selected");
-  }
-  console.log(n);
-});
+}
 
-rightArrow.addEventListener("click", () => {
+function switchToRight() {
   if (n === 3) {
     n = -1;
     i = -1;
-    dots[3].classList.remove("dot_selected");
   }
+
   n += 1;
   i += 1;
   imageBanner.src = `./assets/images/slideshow/${slides[n].image}`;
   tagLineBanner.innerHTML = slides[n].tagLine;
-  if (0 < i < 4) {
-    dots[i].classList.add("dot_selected");
-    dots[i - 1].classList.remove("dot_selected");
-  }
-  console.log(n);
-});
+}
 
-console.log(tagLineBanner);
+leftArrow.addEventListener("click", switchToLeft);
+
+rightArrow.addEventListener("click", switchToRight);
